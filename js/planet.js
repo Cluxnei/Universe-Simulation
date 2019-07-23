@@ -36,7 +36,7 @@ class Planet{
 
         if (this.acceleration.magnitude() > MAX_ACCELERATION_MAGNITUDE) {
             this.exceeded_max_acceleration = true
-            if(STOP_AT_MAX_ACELERATION_magnitude){
+            if(STOP_AT_MAX_ACCELERATION_MAGNITUDE){
                 this.acceleration.scale(0)
             }else{
                 this.acceleration.norm().scale(MAX_ACCELERATION_MAGNITUDE)
