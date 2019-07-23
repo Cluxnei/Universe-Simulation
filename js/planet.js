@@ -91,9 +91,7 @@ class Planet{
       }
 
     color(){
-        return interpolateColorStyleMapping(this.radius, 10, 100, 
-            [184, 233, 134, 0.8],
-            [242, 100, 83, 0.8])
+        return '#000'
     }
 
     collidingPlanet(){

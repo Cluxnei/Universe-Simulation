@@ -5,9 +5,9 @@ const FIXED_DT = 0.016
 const TRACE_LENGTH_PARTS = 10
 const TRACE_LENGTH_SKIP_STEPS = 8
 const EXISTING_RADIUS_MIN = 1
-const MASS_GIVEAWAY_FACTOR = 0.2
+const MASS_GIVEAWAY_FACTOR = 0.27
 // Canvas constants
-const BACKGROUND_COLOR = '#000'
+const BACKGROUND_COLOR = '#fff'
 // Simulation constans
 const PLANETS_NUMBER = 1000
 const PLANETS_POSITION_RANGE = 15000
