@@ -18,8 +18,8 @@ function start(){
     const ctx = canvas.getContext('2d')
 
     const simulation = new Simulation([
-        new Planet(new Vector(-200,10), new Vector(), 50),
-        new Planet(new Vector(100,100), new Vector(-10,100), 30),
+        new Planet(new Vector(-300,0), new Vector(), 20),
+        new Planet(new Vector(300,-100), new Vector(), 20),
     ])
 
     
