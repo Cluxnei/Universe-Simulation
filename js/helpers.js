@@ -7,7 +7,7 @@ function newtonGravitationLaw(m1, m2, d) {
 }
 function initCanvas(){
     const canvas = document.querySelector("#canvas")
-    canvas.zoom = 1
+    canvas.zoom = INITIAL_ZOOM
     canvas.positionX = 0
     canvas.positionY = 0
 
