@@ -7,22 +7,21 @@ function require(src){
 
 require('js/constants')
 require('js/helpers')
-require('js/Vector')
+require('js/vector')
+require('js/element')
+require('js/periodic-table')
+require('js/composition')
 require('js/planet')
 require('js/simulation')
 
 function start(){
     console.log('Start simulation')
-
     const canvas = initCanvas()
     const ctx = canvas.getContext('2d')
-
-    const simulation = new Simulation([
-        new Planet(new Vector(-400,0), new Vector(), 20),
-        new Planet(new Vector(400,-100), new Vector(), 20),
-    ])
-
     
+    PERIODIC_TABLE_ELEMENTS = (new PeriodicTable()).atoms
+
+    const simulation = new Simulation()
     
     setInterval(()=>{
         

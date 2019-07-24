@@ -8,8 +8,8 @@ class Planet{
         this.density = density
         this.volume = 4/3 * Math.PI * Math.pow(this.radius, 3)
         this.mass = this.density * this.volume
-
-        this.trace = []
+        this.composition = new Composition(this.mass)
+        this.trace = []        
     }
     attractionTo(otherPlanet){
         if(otherPlanet == this)
@@ -29,6 +29,7 @@ class Planet{
         if(collidingPlanet){
             this.mergeWith(collidingPlanet, dt)
         }
+        // this.composition.update(this.mass, dt)
         // Compute total forces
         this.forces = this.computeTotalForces()
         // Compute acceleration (Acc = Force / Mass)
@@ -91,7 +92,7 @@ class Planet{
       }
 
     color(){
-        return '#000'
+        return this.composition.element.color
     }
 
     collidingPlanet(){
