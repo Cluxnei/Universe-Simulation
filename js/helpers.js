@@ -75,3 +75,24 @@ function colorForTrace(mag, magE = 500) {
 
     return interpolateColorStyleMapping(mag, magS, magE, colorAtMin, colorAtMax)
 }
+
+function mmc(n, n2) {
+    var mod, a, b;
+    a = n;
+    b = n2;
+    do {
+        mod = a % b;
+        a = b;
+        b = mod;
+    } while (mod != 0);
+    return (n * n2) / a;
+}
+function mdc(n, n2) {
+    var mod;
+    do {
+        mod = n % n2;
+        n = n2;
+        n2 = mod;
+    } while (mod != 0);
+    return n;
+}
