@@ -1,17 +1,14 @@
 class Composition{
-    constructor(mass){
-        this.mass = mass
-        this.element = this.getElementByMass()
+    constructor(element){
+        this.element = element || PERIODIC_TABLE_ELEMENTS[0]
+        this.number = this.element.number - 1
     }
-    update(mass, dt){
-        this.mass = mass * dt
-        this.element = this.getElementByMass()
-        console.log(this.element);
-    }
-    getElementByMass(){
-        const mass =  this.mass / PLANETS_INITIAL_MAX_MASS
-        let mmcs = []
-        PERIODIC_TABLE_ELEMENTS.map(element => mmcs.push(mmc(element.relativeMass, mass)))
-        return PERIODIC_TABLE_ELEMENTS[mmcs.indexOf(Math.min.apply(Math, mmcs))];
+    upgrade(composition){
+        if(composition.number >= this.number){
+            this.number++
+            this.element = PERIODIC_TABLE_ELEMENTS[this.number]
+            if(this.number > MAX_ELEMENT)
+               MAX_ELEMENT = this.number
+        }
     }
 }

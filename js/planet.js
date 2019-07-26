@@ -8,8 +8,8 @@ class Planet{
         this.density = density
         this.volume = 4/3 * Math.PI * Math.pow(this.radius, 3)
         this.mass = this.density * this.volume
-        this.composition = new Composition(this.mass)
-        this.trace = []        
+        this.composition = new Composition()
+        this.trace = []              
     }
     attractionTo(otherPlanet){
         if(otherPlanet == this)
@@ -29,7 +29,6 @@ class Planet{
         if(collidingPlanet){
             this.mergeWith(collidingPlanet, dt)
         }
-        // this.composition.update(this.mass, dt)
         // Compute total forces
         this.forces = this.computeTotalForces()
         // Compute acceleration (Acc = Force / Mass)
@@ -40,7 +39,7 @@ class Planet{
             if(STOP_AT_MAX_ACCELERATION_MAGNITUDE){
                 this.acceleration.scale(0)
             }else{
-                this.acceleration.norm().scale(MAX_ACCELERATION_MAGNITUDE)
+                this.acceleration.normalize().scale(MAX_ACCELERATION_MAGNITUDE)
             }
           } else {
             this.exceeded_max_acceleration = false
@@ -73,9 +72,9 @@ class Planet{
     renderPlanet(ctx) {
         ctx.beginPath()
         ctx.arc(this.position.x, this.position.y, this.radius, 0, 360)
-        ctx.strokeStyle = this.exceeded_max_acceleration ? '#FF0000' : 'transparent'
+        // ctx.strokeStyle = this.exceeded_max_acceleration ? '#FF0000' : 'transparent'
         ctx.fillStyle = this.color()
-        ctx.stroke()
+        // ctx.stroke()
         ctx.fill()
     }
 
@@ -121,7 +120,8 @@ class Planet{
         if (this.radius < EXISTING_RADIUS_MIN) {
             giveMass = this.mass
         }
-    
+        planet.composition.upgrade(this.composition)
+        
         planet.addMass(giveMass/*, this.position*/)
         this.addMass(-giveMass/*, planet.position*/)
     

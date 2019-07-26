@@ -21,7 +21,16 @@ function start(){
     
     PERIODIC_TABLE_ELEMENTS = (new PeriodicTable()).atoms
 
-    const simulation = new Simulation()
+    const initialPlanets = [
+        new Planet(new Vector(), new Vector(), 10),
+        new Planet(new Vector(40,10), new Vector(), 10),
+        new Planet(new Vector(-40,-10), new Vector(), 10),
+        new Planet(new Vector(-80,0), new Vector(), 10),
+    ]
+
+    const simulation = new Simulation(
+        // initialPlanets
+    )
     
     setInterval(()=>{
         
@@ -32,6 +41,14 @@ function start(){
         simulation.render(ctx)
         
     }, FIXED_DT * 1000)
+
+    setInterval(() => {
+        console.table({
+            'Current Zoom': canvas.zoom,
+            'Planet Number': simulation.planets.length,
+            'Max Element': PERIODIC_TABLE_ELEMENTS[MAX_ELEMENT].name
+        })
+    }, LOG_AT * 1000)
 }
 
 window.onload = start
