@@ -9,7 +9,7 @@ const MASS_GIVEAWAY_FACTOR = 0.27
 // Canvas constants
 const BACKGROUND_COLOR = '#000'
 // Simulation constans
-const PLANETS_NUMBER = 1000
+const PLANETS_NUMBER = 100
 const PLANETS_POSITION_RANGE = 10700
 const PLANETS_VELOCITY_RANGE = 20
 const PLANETS_RADIUS_RANGE_MIN = 1
