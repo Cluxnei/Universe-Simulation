@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c284302-6883-4e4e-be59-7989aca41c1a" name="Default Changelist" comment="fixes" />
+    <list default="true" id="629508ef-8ce8-4e73-863d-e5fff124ec47" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/planet.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/planet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/simulation.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/simulation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/vector.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/vector.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,8 +37,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1cgAzygkVI1nszZtahdPPhdatKE" />
-  <component name="ProjectLevelVcsManager">
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1d43vAvIcZ9jMkB3ML2Sht5UKri" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -37,39 +52,30 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3c284302-6883-4e4e-be59-7989aca41c1a" name="Default Changelist" comment="" />
-      <created>1590940128732</created>
+      <changelist id="629508ef-8ce8-4e73-863d-e5fff124ec47" name="Default Changelist" comment="" />
+      <created>1591670765967</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1590940128732</updated>
-      <workItem from="1590940129989" duration="970000" />
+      <updated>1591670765967</updated>
+      <workItem from="1591670772882" duration="8956000" />
     </task>
-    <task id="LOCAL-00001" summary="fixes">
-      <created>1590946075416</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1590946075416</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,9 +92,14 @@
       </map>
     </option>
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
+  <component name="WindowStateProjectService">
+    <state x="667" y="261" width="585" height="558" key="find.popup" timestamp="1591671903756">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="667" y="261" width="585" height="558" key="find.popup/0.0.1920.1080/-339.-1080.2560.1080@0.0.1920.1080" timestamp="1591671903756" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1591671616130">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/-339.-1080.2560.1080@0.0.1920.1080" timestamp="1591671616130" />
   </component>
 </project>

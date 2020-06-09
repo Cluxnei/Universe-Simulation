@@ -1,32 +1,34 @@
 class Simulation{
     constructor(planets){
         this.planets = planets || this.randomPlanets()
-
-        this.planets.map(planet => planet.simulation = this)
+        this.planets.forEach(planet => planet.simulation = this)
     }
     randomPlanets(){
         let planets = []
         for(let i = 0; i < PLANETS_NUMBER; i++){
-            let pxrand = rand(-PLANETS_POSITION_RANGE,PLANETS_POSITION_RANGE)
-            let pyrand = rand(-PLANETS_POSITION_RANGE,PLANETS_POSITION_RANGE)
-            let vxrand = rand(-PLANETS_VELOCITY_RANGE,PLANETS_VELOCITY_RANGE)
-            let vyrand = rand(-PLANETS_VELOCITY_RANGE,PLANETS_VELOCITY_RANGE)
-            let radius = rand(PLANETS_RADIUS_RANGE_MIN, PLANETS_RADIUS_RANGE_MAX)
-            let density = rand(PLANETS_DENSITY_RANGE_MIN, PLANETS_DENSITY_RANGE_MAX)
-            let position = new Vector(pxrand,pyrand)
-            let velocity = new Vector(vxrand,vyrand)
-            let planet = new Planet(position,velocity,radius,density)
+            const props = {
+                position: new Vector(
+                    rand(-PLANETS_POSITION_RANGE,PLANETS_POSITION_RANGE),
+                    rand(-PLANETS_POSITION_RANGE,PLANETS_POSITION_RANGE),
+                    rand(-PLANETS_POSITION_RANGE,PLANETS_POSITION_RANGE),
+                ),
+                velocity: new Vector(
+                    rand(-PLANETS_VELOCITY_RANGE,PLANETS_VELOCITY_RANGE),
+                    rand(-PLANETS_VELOCITY_RANGE,PLANETS_VELOCITY_RANGE),
+                    rand(-PLANETS_VELOCITY_RANGE,PLANETS_VELOCITY_RANGE),
+                ),
+                radius: rand(PLANETS_RADIUS_RANGE_MIN, PLANETS_RADIUS_RANGE_MAX),
+                density: rand(PLANETS_DENSITY_RANGE_MIN, PLANETS_DENSITY_RANGE_MAX),
+            }
+            const planet = new Planet(props.position, props.velocity, props.radius, props.density)
             planets.push(planet)
         }
         return planets
     }
-    update(dt = 0.016){
-        this.planets.map(planet => planet.update(dt))
-    }
-    render(ctx){
-        this.planets.map(planet => planet.render(ctx))
+    update(dt = 0.016, removeEntity = undefined){
+        this.planets.forEach(planet => planet.update(dt, removeEntity))
     }
     removePlanet(planet){
-        this.planets = this.planets.filter(p => p != planet)
+        this.planets = this.planets.filter(p => p !== planet)
     }
 }

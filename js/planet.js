@@ -5,29 +5,33 @@ class Planet{
         this.acceleration = new Vector()
         this.forces = new Vector()
         this.radius = radius
+        this.initialRadius = radius
         this.density = density
         this.volume = 4/3 * Math.PI * Math.pow(this.radius, 3)
         this.mass = this.density * this.volume
         this.composition = new Composition()
-        this.trace = []              
+        this.trace = []
+        this.simulation = []
+        this.geometry = new THREE.DodecahedronBufferGeometry(this.radius, RENDER_DETAILS);
+        this.material = new THREE.MeshBasicMaterial({color: this.color()});
+        this.sphere = new THREE.Mesh(this.geometry, this.material);
     }
     attractionTo(otherPlanet){
-        if(otherPlanet == this)
+        if(otherPlanet === this)
             return new Vector()
         const distanceBetweenPlanets = otherPlanet.position.copy().sub(this.position)
         const distanceBetweenPlanetsScalar = distanceBetweenPlanets.magnitude()
         const forceScalar = newtonGravitationLaw(this.mass, otherPlanet.mass,distanceBetweenPlanetsScalar)
-        const forceVector = distanceBetweenPlanets.normalize().scale(forceScalar)
-        return forceVector
+        return distanceBetweenPlanets.normalize().scale(forceScalar)
     }
     computeTotalForces(){
         return this.simulation.planets
             .reduce((forces, planet) => forces.add(this.attractionTo(planet)), new Vector())
     }
-    update(dt) {
+    update(dt, removeEntity) {
         let collidingPlanet = this.collidingPlanet()
         if(collidingPlanet){
-            this.mergeWith(collidingPlanet, dt)
+            this.mergeWith(collidingPlanet, dt, removeEntity)
         }
         // Compute total forces
         this.forces = this.computeTotalForces()
@@ -49,7 +53,7 @@ class Planet{
         // Integrate to position
         this.position.add(this.velocity.copy().scale(dt))
 
-        let snapshot = { 
+        let snapshot = {
             position: this.position.copy(),
             velocity: this.velocity.magnitude()
         }
@@ -61,21 +65,6 @@ class Planet{
             this.traceStep = (this.traceStep || 0) + 1
             this.trace[this.trace.length - 1] = snapshot
         }
-    }
-
-    render(ctx){
-        this.renderPlanet(ctx)
-
-        this.renderTrace(ctx)
-    }
-
-    renderPlanet(ctx) {
-        ctx.beginPath()
-        ctx.arc(this.position.x, this.position.y, this.radius, 0, 360)
-        // ctx.strokeStyle = this.exceeded_max_acceleration ? '#FF0000' : 'transparent'
-        ctx.fillStyle = this.color()
-        // ctx.stroke()
-        ctx.fill()
     }
 
     renderTrace(ctx) {
@@ -99,7 +88,7 @@ class Planet{
     }
 
     collidingWith(planet){
-        if(planet == this || planet.mass < this.mass || this.removed)
+        if(planet === this || planet.mass < this.mass || this.removed)
             return false
         let distanceScalar = planet.position.copy().sub(this.position).magnitude()
         return (distanceScalar < planet.radius + this.radius)
@@ -109,24 +98,25 @@ class Planet{
         let increase = (this.mass + mass) / this.mass
         // let percent = mass / this.mass
         this.volume *= increase
-        this.radius = Math.pow((3 / 4 * 1 / Math.PI * this.volume), (1 / 3))
+        this.radius = ((3 / 4 / Math.PI * this.volume) ** (1 / 3))
         this.mass += mass
         // this.position.add(this.position.copy().sub(position).scale(percent))
     }
 
-    mergeWith(planet, dt) {
+    mergeWith(planet, dt, removeEntity) {
         let giveMass = MASS_GIVEAWAY_FACTOR * this.mass * dt * 100
-    
+
         if (this.radius < EXISTING_RADIUS_MIN) {
             giveMass = this.mass
         }
         planet.composition.upgrade(this.composition)
-        
+
         planet.addMass(giveMass/*, this.position*/)
         this.addMass(-giveMass/*, planet.position*/)
-    
+
         if (this.mass <= 0.1) {
             this.removed = true
+            removeEntity(this.sphere)
             this.simulation.removePlanet(this)
         }
     }
