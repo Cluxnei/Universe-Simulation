@@ -28,8 +28,8 @@ function initCanvas(){
         canvas.dragging = false
     })
 
-    canvas.addEventListener('wheel', function(event){        
-        canvas.zoom += canvas.zoom * (event.deltaY / 100)
+    canvas.addEventListener('wheel', function(event){
+        canvas.zoom -= event.deltaY / 1000 * canvas.zoom;
     })
 
     function resizeCanvas(){
@@ -43,13 +43,13 @@ function initCanvas(){
 
 function updateCanvas(canvas) {
     const ctx = canvas.getContext('2d')
-    
+
     const zoom = canvas.zoom
     const w = canvas.clientWidth
     const h = canvas.clientHeight
     const x = canvas.positionX || 0
     const y = canvas.positionY || 0
-    
+
     ctx.resetTransform()
     ctx.fillStyle = BACKGROUND_COLOR
     ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight)
